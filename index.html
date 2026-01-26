@@ -3,50 +3,477 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manish Venkatarathnam | Cloud & Frontend Developer</title>
+    <title>Manish Venkatarathnam | Cloud & DevOps Enthusiast</title>
     
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230A192F'/><text x='50' y='75' font-family='Arial, sans-serif' font-weight='bold' font-size='70' fill='%23FFD700' text-anchor='middle'>M</text></svg>">
+    <!-- Fonts & Icons -->
+         <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23FFD700'/><text x='50' y='75' font-family='Arial, sans-serif' font-weight='bold' font-size='70' fill='%230A192F' text-anchor='middle'>M</text></svg>">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- 
+        =========================================
+        CSS SECTION (Move this to style.css)
+        =========================================
+    -->
+    <style>
+        :root {
+            --bg-deep: #0A192F;
+            --bg-light: #112240;
+            --bg-glass: rgba(255, 255, 255, 0.05);
+            --accent: #FFD700;
+            --text-main: #E6F1FF;
+            --text-dim: #8892B0;
+            --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--bg-light); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            height: 70px;
+            box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span { color: var(--text-main); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            color: var(--accent);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .greeting {
+            color: var(--accent);
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 70px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero h2 {
+            font-size: clamp(30px, 5vw, 50px);
+            color: var(--text-dim);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 1.75rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: 1px solid var(--accent);
+        }
+
+        .btn-primary {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            height: 1px;
+            width: 300px;
+            background: var(--bg-light);
+            margin-left: 20px;
+        }
+
+        /* Cards & Grids */
+        .grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.5);
+        }
+
+        /* Objective Card Specifics */
+        .obj-card {
+            border-left: 4px solid var(--accent);
+        }
+
+        .obj-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        /* Education Card Specifics */
+        .edu-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .edu-card .school {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .edu-card .date {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            font-family: monospace;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid var(--bg-light);
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -37px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-content h3 { font-size: 1.2rem; margin-bottom: 5px; }
+        .timeline-content h4 { color: var(--accent); font-weight: 400; margin-bottom: 10px; }
+        .timeline-content .date { font-size: 0.8rem; color: var(--text-dim); display: block; margin-bottom: 10px; }
+        .timeline-content p { font-size: 0.95rem; color: var(--text-dim); }
+
+        /* Project Cards */
+        .projects-grid {
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        }
+
+        .project-card h3 {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-card h3 i { color: var(--accent); font-size: 1.1rem; }
+        
+        .stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .stack span {
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            background: rgba(255, 215, 0, 0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            color: var(--accent);
+        }
+
+        .project-link i {
+            margin-right: 5px;
+        }
+
+        /* Skills Pill */
+        .skills-grid {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+
+        .skill-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-item i { color: var(--accent); }
+
+        /* Enhanced Certifications */
+        .cert-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .cert-pill {
+            background: var(--bg-light);
+            border: 2px solid var(--accent);
+            padding: 18px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .cert-pill:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.15);
+        }
+
+        .cert-pill i {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            background: var(--bg-deep);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icons a {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            font-family: monospace;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-light);
+                flex-direction: column;
+                padding: 2rem;
+                text-align: center;
+            }
+
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .section-title::after { width: 100px; }
+        }
+    </style>
 </head>
 <body>
 
-    <nav class="navbar">
+    <nav id="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">Manis<span>.V</span></a>
-            <ul class="nav-links">
+            <a href="#" class="logo">Manish<span>.V</span></a>
+            <ul class="nav-links" id="nav-menu">
                 <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact" class="btn-nav">Contact</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1rem;">Contact</a></li>
             </ul>
-            <div class="hamburger">
+            <div class="hamburger" id="nav-toggle">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
     </nav>
 
-   <header class="hero">
+    <header class="hero">
         <div class="container hero-content">
-            <span class="greeting">Hello, I am</span>
-            <h1>Manish Venkatarathnm</h1>
-            <h2>Frontend Developer & Cloud Enthusiast</h2>
+            <span class="greeting">Hi, my name is</span>
+            <h1>Manish Venkatarathnam.</h1>
+            <h2>Cloud, Azure & DevOps Enthusiast.</h2>
             <p>
-                Beginner in cloud technologies with a strong interest in modern platforms. 
-                Experienced in managing academic projects and building responsive user interfaces.
+                A Cloud Computing & DevOps enthusiast with a background in Frontend Development. 
+                I specialize in deploying modern web applications using Azure, CI/CD pipelines, and 
+                serverless architectures.
             </p>
             <div class="hero-btns">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                
-                <a href="./resume.pdf" target="_blank" class="btn btn-outline">
-                    <i class="fas fa-file-pdf"></i> Resume
+                <a href="#projects" class="btn btn-primary">Check out my work!</a>
+                <a href="https://www.linkedin.com/in/manish-venkatarathnam/" target="_blank" class="btn" style="margin-left: 15px; border: 1px solid var(--text-dim); color: var(--text-dim);">
+                    <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
-
-                <a href="https://linkedin.com/in/manishvenki/" target="_blank" class="btn btn-outline">
-                    <i class="fab fa-linkedin"></i>
+                <a href="https://github.com/manishvenki" target="_blank" class="btn" style="margin-left: 15px; border: 1px solid var(--text-dim); color: var(--text-dim);">
+                    <i class="fab fa-github"></i> GitHub
                 </a>
             </div>
         </div>
@@ -54,48 +481,50 @@
 
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-grid">
-                <div class="card edu-card">
-                    <div class="icon-box"><i class="fas fa-graduation-cap"></i></div>
-                    <h3>MSc Computer Science</h3>
-                    <p class="school">Kristu Jayanti (Deemed to be University)</p>
-                    <span class="date">2024 - Present</span>
+            <h2 class="section-title">01. Objective & Education</h2>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <!-- Objective Card -->
+                <div class="card obj-card">
+                    <h3><i class="fas fa-bullseye"></i> Career Objective</h3>
+                    <p style="color: var(--text-dim);">
+                        Beginner in cloud computing with hands-on experience using Microsoft Azure services and a strong interest in DevOps practices. Seeking opportunities to apply cloud skills and serverless expertise in a professional environment.
+                    </p>
                 </div>
-                <div class="card edu-card">
-                    <div class="icon-box"><i class="fas fa-university"></i></div>
-                    <h3>Bachelor of Computer Applications</h3>
-                    <p class="school">Kristu Jayanti College (Autonomous)</p>
-                    <span class="date">2021 - 2024</span>
+                <!-- Education History Cards -->
+                <div class="grid" style="gap: 20px;">
+                    <div class="card edu-card">
+                        <h3>M.Sc. Computer Science</h3>
+                        <span class="school">Kristu Jayanti (Deemed to be University)</span>
+                        <span class="date">Aug 2024 - July 2026</span>
+                    </div>
+                    <div class="card edu-card">
+                        <h3>BCA (Bachelor of Computer Science)</h3>
+                        <span class="school">Kristu Jayanti College (Autonomous)</span>
+                        <span class="date">Aug 2021 - Apr 2024</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="section bg-light">
+    <section id="experience" class="section">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-wrapper">
-                <div class="skill-category">
-                    <h3>Frontend Development</h3>
-                    <div class="tags">
-                        <span>HTML & CSS</span>
-                        <span>Angular</span>
-                        <span>Tailwind CSS</span>
-                        <span>JavaScript</span>
-                        <span>XML</span>
-                        <span>UI/UX Design</span>
+            <h2 class="section-title">02. Where I've Worked</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="date">June 2025 - July 2025</span>
+                        <h3>Frontend Intern</h3>
+                        <h4>Software Development Cell (KJU)</h4>
+                        <p>Worked on Angular framework and Tailwind CSS to design clean, modern, and responsive user interfaces. Built reusable UI components and collaborated with backend teams for API integration.</p>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Backend & Cloud</h3>
-                    <div class="tags">
-                        <span>Cloud Computing (Basic)</span>
-                        <span>Python (Intermediate)</span>
-                        <span>Node.js</span>
-                        <span>MongoDB</span>
-                        <span>Firebase</span>
-                        <span>Git/GitHub</span>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="date">June 2024 - July 2024</span>
+                        <h3>Web Developer Intern</h3>
+                        <h4>Velozion Technologies</h4>
+                        <p>Learned HTML, CSS, and JavaScript from scratch. Built responsive web pages and strengthened core frontend development fundamentals within a professional office workflow.</p>
                     </div>
                 </div>
             </div>
@@ -104,110 +533,150 @@
 
     <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
+            <h2 class="section-title">03. Some Things I've Built</h2>
+            <div class="grid projects-grid">
                 
                 <div class="card project-card">
-                    <div class="card-head">
-                        <h3>Atlas Travel App</h3>
-                        <i class="fas fa-plane"></i>
-                    </div>
-                    <p>Built a user-friendly travel app using Kotlin and XML. Integrated Firebase Realtime Database for managing place details and admin data[cite: 14, 15].</p>
+                    <h3>ATS Resume Analyzer <i class="fas fa-search"></i></h3>
+                    <p>Designed and deployed a cloud-based ATS analyzer using Azure Static Web Apps. Automated deployment via GitHub Actions CI/CD pipelines.</p>
                     <div class="stack">
-                        <span>Kotlin</span><span>XML</span><span>Firebase</span>
+                        <span>Azure SWA</span><span>Azure Functions</span><span>Blob Storage</span><span>GitHub Actions</span>
                     </div>
+                    <a href="https://github.com/manishvenki/Atc" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Repository
+                    </a>
                 </div>
 
                 <div class="card project-card">
-                    <div class="card-head">
-                        <h3>Oriel Cafe Management</h3>
-                        <i class="fas fa-coffee"></i>
-                    </div>
-                    <p>A duo project for managing cafe orders. Developed backend with Node.js and used MongoDB for secure storage of menu items and customer data[cite: 19, 20].</p>
+                    <h3>Azure Static Website <i class="fas fa-cloud"></i></h3>
+                    <p>Hosted a static website with automated CI/CD. Managed source control and cloud resources using Git and Azure Portal.</p>
                     <div class="stack">
-                        <span>Node.js</span><span>MongoDB</span><span>HTML/CSS</span>
+                        <span>Azure</span><span>CI/CD</span><span>Git</span><span>Web Hosting</span>
                     </div>
+                    <a href="https://github.com/manishvenki/Portfolio1" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Repository
+                    </a>
                 </div>
 
                 <div class="card project-card">
-                    <div class="card-head">
-                        <h3>Gear-Go Logistics</h3>
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <p>Developed the frontend using Angular and Tailwind CSS. Collaborated with backend teams to integrate Node.js APIs for logistics operations[cite: 22, 23].</p>
+                    <h3>Atlas Travel App <i class="fas fa-mobile-alt"></i></h3>
+                    <p>Built a user-friendly Android app using Kotlin. Integrated Firebase Realtime Database to manage trip categories and admin data efficiently.</p>
                     <div class="stack">
-                        <span>Angular</span><span>Tailwind</span><span>API Integration</span>
+                        <span>Kotlin</span><span>XML</span><span>Firebase</span><span>Android Studio</span>
                     </div>
+                    <a href="http://github.com/manishvenki/Atlas-Project" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Repository
+                    </a>
                 </div>
 
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://github.com/manishvenki" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github"></i> Explore All Projects
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="section bg-light">
+    <section id="skills" class="section">
         <div class="container">
-            <h2 class="section-title">Internship Experience</h2>
-            <div class="timeline">
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="time">July - Dec 2024</span>
-                        <h3>UI/UX Design Intern</h3>
-                        <h4>STACKZERO</h4>
-                        <p>Gained hands-on experience designing modern, user-friendly interfaces. Participated in wireframing and final UI creation [cite: 46-49].</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="time">June - July 2025</span>
-                        <h3>Frontend Intern</h3>
-                        <h4>Software Development Cell (KJU)</h4>
-                        <p>Learned Angular and TailwindCSS fundamentals. Built responsive UI components and collaborated on API integration [cite: 36-40].</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="time">June - July 2024</span>
-                        <h3>Web Developer Intern</h3>
-                        <h4>Velozion Technologies</h4>
-                        <p>Built simple web pages using HTML, CSS, and JavaScript. Gained exposure to office web development workflows [cite: 41-44].</p>
-                    </div>
-                </div>
-
+            <h2 class="section-title">04. Technical Skills</h2>
+            <div class="grid skills-grid">
+                <div class="skill-item"><i class="fab fa-microsoft"></i> Microsoft Azure</div>
+                <div class="skill-item"><i class="fas fa-code-branch"></i> GitHub Actions (CI/CD)</div>
+                <div class="skill-item"><i class="fab fa-python"></i> Python (Intermediate)</div>
+                <div class="skill-item"><i class="fab fa-angular"></i> Angular & Tailwind</div>
+                <div class="skill-item"><i class="fas fa-terminal"></i> Linux Basics</div>
+                <div class="skill-item"><i class="fas fa-database"></i> Firebase / SQL</div>
+                <div class="skill-item"><i class="fab fa-figma"></i> Figma</div>
+                <div class="skill-item"><i class="fas fa-shield-alt"></i> Cybersecurity Basics</div>
             </div>
-        </div>
-    </section>
 
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Certifications</h2>
-            <div class="cert-flex">
-                <div class="cert-pill">Microsoft Azure Fundamentals (2024)</div>
-                <div class="cert-pill">Google Cyber Security (2024)</div>
-                <div class="cert-pill">Oracle Cloud Infrastructure (2025)</div>
-                <div class="cert-pill">Intro to Cloud Computing (2025)</div>
-                <div class="cert-pill">UI Path - AI Agent & Studio (2025)</div>
+            <h3 style="margin: 60px 0 20px; font-weight: 700; font-size: 1.8rem; color: var(--accent);">Certifications</h3>
+            <div class="cert-stack">
+                <div class="cert-pill"><i class="fas fa-award"></i> Microsoft Azure Fundamentals</div>
+                <div class="cert-pill"><i class="fas fa-award"></i> Google Cyber Security</div>
+                <div class="cert-pill"><i class="fas fa-award"></i> IBM Intro to Cloud</div>
+                <div class="cert-pill"><i class="fas fa-award"></i> Oracle Cloud AI Associate</div>
+                <div class="cert-pill"><i class="fas fa-award"></i> UI Path - AI Agent</div>
             </div>
         </div>
     </section>
 
     <footer id="contact">
-        <div class="container footer-content">
-            <h2>Get In Touch</h2>
-            <p>Bangalore, Karnataka</p>
-            <div class="social-links">
-                <a href="mailto:manishvenki07@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-                <a href="https://linkedin.com/in/manishvenki/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Get In Touch</h2>
+            <p style="color: var(--text-dim); max-width: 500px; margin: 0 auto 3rem;">
+                Currently seeking an opportunity to grow in Cloud and DevOps. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            </p>
+            
+            <div class="social-icons">
+                <a href="mailto:manishvenki07@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/manish-venkatarathnam/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/manishvenki" target="_blank"><i class="fab fa-github"></i></a>
             </div>
-            <p class="copyright">&copy; 2025 Manish Venkatarathnm</p>
+
+            <p class="copyright">Designed & Built by Manish Venkatarathnam © 2025</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- 
+        =========================================
+        JS SECTION (Move this to script.js)
+        =========================================
+    -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const toggle = document.getElementById('nav-toggle');
+        const menu = document.getElementById('nav-menu');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            const icon = toggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // Scroll Reveal Animation (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .section-title, .timeline-item, .cert-pill').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
